@@ -1,0 +1,716 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-bg: #f5f4ef;
+  --color-surface: #ffffff;
+  --color-primary: #0e6b5c;
+  --color-primary-dark: #0a4f44;
+  --color-accent: #d98f2b;
+  --color-text: #1b241f;
+  --color-text-muted: #62716a;
+  --color-border: #e2e5df;
+  --color-danger: #b3261e;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius: 10px;
+  --shadow-card: 0 20px 50px -20px rgba(14, 40, 33, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select {
+  font-family: inherit;
+}
+
+a {
+  color: var(--color-primary);
+}
+
+.page-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+}
+
+/* ---------- Auth screens (login / register) ---------- */
+
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  background-color: var(--color-bg);
+  background-image: radial-gradient(var(--color-border) 1.4px, transparent 1.4px);
+  background-size: 22px 22px;
+}
+
+.auth-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 40px 36px 36px;
+  border: 1px solid var(--color-border);
+}
+
+.auth-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.auth-mark svg {
+  flex-shrink: 0;
+}
+
+.auth-mark-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.25;
+  color: var(--color-primary-dark);
+}
+
+.auth-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 26px;
+  margin: 0 0 6px;
+  color: var(--color-text);
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin: 0 0 28px;
+}
+
+.auth-field {
+  margin-bottom: 18px;
+}
+
+.auth-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.auth-field input,
+.auth-field select {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fbfbf9;
+  color: var(--color-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-field input:focus,
+.auth-field select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(14, 107, 92, 0.15);
+  background: #fff;
+}
+
+.auth-submit {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.auth-submit:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+}
+
+.auth-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-error {
+  background: #fdecea;
+  border: 1px solid #f3c6c2;
+  color: var(--color-danger);
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 22px;
+}
+
+.auth-switch a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- App shell (topbar + nav, wraps every logged-in page) ---------- */
+
+.app-shell {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.app-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 28px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-nav {
+  display: flex;
+  gap: 22px;
+  flex: 1;
+  justify-content: center;
+}
+
+.app-nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.app-nav a:hover {
+  color: var(--color-text);
+}
+
+.app-nav a.active {
+  color: var(--color-primary-dark);
+  border-bottom-color: var(--color-primary);
+  font-weight: 600;
+}
+
+.app-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.dashboard-role-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: rgba(14, 107, 92, 0.12);
+  color: var(--color-primary-dark);
+}
+
+.dashboard-logout {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.dashboard-logout:hover {
+  background: var(--color-bg);
+}
+
+.app-content {
+  padding: 40px 28px 64px;
+}
+
+/* ---------- Shared module page layout (Dashboard, Prescriptions, Sales, Reports) ---------- */
+
+.module-page {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.module-page h1 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.module-page h2 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin: 0 0 16px;
+}
+
+.module-page h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 20px 0 10px;
+}
+
+.muted {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+/* Forms used on Prescriptions / Sales / Reports pages */
+
+.card-form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 12px;
+}
+
+.form-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.form-field {
+  flex: 1;
+  min-width: 160px;
+  margin-bottom: 14px;
+}
+
+.form-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fbfbf9;
+}
+
+.item-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.item-row input,
+.item-row select {
+  flex: 1;
+  padding: 9px 11px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fbfbf9;
+}
+
+.item-unit-price {
+  flex: 0 0 auto;
+  min-width: 90px;
+  font-size: 13px;
+  color: var(--color-text-muted, #667);
+  text-align: right;
+}
+
+.item-remove {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  font-size: 16px;
+  color: var(--color-danger);
+  cursor: pointer;
+}
+
+.add-row-btn {
+  background: none;
+  border: 1px dashed var(--color-border);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  color: var(--color-primary-dark);
+  cursor: pointer;
+}
+
+.add-row-btn:hover {
+  background: rgba(14, 107, 92, 0.06);
+}
+
+.sale-total {
+  margin: 16px 0;
+  font-size: 15px;
+}
+
+.sale-confirmation {
+  background: rgba(14, 107, 92, 0.1);
+  border: 1px solid rgba(14, 107, 92, 0.25);
+  color: var(--color-primary-dark);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* Data tables (prescriptions list, top-selling medicines, etc.) */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--color-bg);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.data-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Reports page */
+
+.report-filter .form-row {
+  align-items: flex-end;
+}
+
+.report-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  flex: 1;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--color-primary-dark);
+}
+
+
+@media (max-width: 900px) {
+  .app-content {
+    padding: 28px 18px 48px;
+  }
+
+  .module-page {
+    max-width: 100%;
+  }
+
+  .report-stats {
+    flex-direction: column;
+  }
+
+  .card-form {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Auth screens */
+  .auth-card {
+    padding: 28px 22px 26px;
+    max-width: 100%;
+  }
+
+  .auth-mark-text {
+    font-size: 14px;
+  }
+
+  .app-topbar {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  .app-nav {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .app-nav a {
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  .app-user {
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .app-user span:first-child {
+    display: none;
+  }
+
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-field {
+    min-width: 0;
+  }
+
+  .item-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .item-remove {
+    align-self: flex-end;
+    width: auto;
+    padding: 4px 10px;
+  }
+
+  /* Tables: allow horizontal scroll instead of squeezing columns */
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .data-table thead,
+  .data-table tbody,
+  .data-table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .module-page h1 {
+    font-size: 21px;
+  }
+}
+/* ================================================
+   Added for Member 2 (Medicine, Stock & Alerts).
+   Append this block to the END of:
+   pharmacy-frontend/src/styles/global.css
+   These class names do not exist in the current file.
+   ================================================ */
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+th {
+  background: #f9fafb;
+  font-weight: 600;
+}
+
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-primary { background: #2563eb; color: #fff; }
+.btn-danger { background: #dc2626; color: #fff; }
+.btn-secondary { background: #e5e7eb; color: #111827; }
+
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filters input, .filters select {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  gap: 4px;
+}
+
+.form-grid input, .form-grid select {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.badge {
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-low { background: #fee2e2; color: #b91c1c; }
+.badge-expiry { background: #fef3c7; color: #92400e; }
+.badge-ok { background: #dcfce7; color: #166534; }
+
+.alert-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+/* ================================================
+   Added for Member 3 (Suppliers & Purchase Orders).
+   Append this block to the END of:
+   pharmacy-frontend/src/styles/global.css
+   (table/th/td and .form-field/.item-row already exist from
+   the base project / Member 2's append — not repeated here.)
+   ================================================ */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.error-banner {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.field-error {
+  display: block;
+  color: #b91c1c;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.checkbox-field label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}

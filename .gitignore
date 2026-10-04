@@ -1,0 +1,15 @@
+# Backend (Maven)
+pharmacy-backend/target/
+pharmacy-backend/.idea/
+pharmacy-backend/*.iml
+
+# Frontend (Vite/Node)
+pharmacy-frontend/node_modules/
+pharmacy-frontend/dist/
+
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store

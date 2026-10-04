@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: pharmacy-drug-inventory-system
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pharmacy_db
+    username: pharmacy_user
+    password: pharmacy_pass
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # fine for dev/coursework; switch to 'validate' + migrations for production
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+app:
+  jwt:
+    # IMPORTANT: override this in production via env var, never commit a real secret
+    secret: ${JWT_SECRET:CA235PharmacyDrugInventorySystemSuperSecretKeyChangeMe123456}
+    expiration-ms: 86400000   # 24 hours
